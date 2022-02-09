@@ -22,7 +22,8 @@ averageDistorsion
 
 
 
-Average Distorsion project
+Average Distorsion project.
+
 
 
 * Free software: GNU General Public License v3
