@@ -167,7 +167,7 @@ class firstDictator(votingRule):
 
     @cached_property
     def ranking_(self):
-        return np.argsort(self.matrix_[0])
+        return np.argsort(self.matrix_[0])[::-1]
 
 
 class randomDictator(votingRule):
@@ -176,7 +176,34 @@ class randomDictator(votingRule):
 
     @cached_property
     def ranking_(self):
-        return np.argsort(self.matrix_[np.random.randint(self.matrix_.shape[0])])
+        return np.argsort(self.matrix_[np.random.randint(self.matrix_.shape[0])])[::-1]
+
+
+class median(votingRule):
+
+    name = "median"
+
+    @cached_property
+    def ranking_(self):
+        return np.argsort(np.median(self.matrix_, axis=0))[::-1]
+
+
+class nashProduct(votingRule):
+
+    name = "Nash Product"
+
+    @cached_property
+    def ranking_(self):
+        return np.argsort(np.product(self.matrix_, axis=0))[::-1]
+
+
+class egalitarian(votingRule):
+
+    name = "egalitarian"
+
+    @cached_property
+    def ranking_(self):
+        return np.argsort(np.min(self.matrix_, axis=0))[::-1]
 
 
 class rankedPairs(votingRule):
@@ -195,7 +222,7 @@ class rankedPairs(votingRule):
         return newMatrix
 
     @cached_property
-    def winner_(self):
+    def ranking_(self):
         n, m = self.matrix_.shape
         newMatrix = self.majorityMatrix()
         dominate = [[] for _ in range(m)]
@@ -204,24 +231,28 @@ class rankedPairs(votingRule):
         pairs_matrix = []
         for i in range(m):
             for j in range(m):
-                pairs_matrix.append((newMatrix[i, j], i, j))
+                if i != j:
+                    pairs_matrix.append((newMatrix[i, j], i, j))
 
         pairs_matrix.sort()
         pairs_matrix = pairs_matrix[::-1]
 
-        cont = True
-        while cont:
+        while True:
             val, i, j = pairs_matrix[0]
+            if val <= 0:
+                break
+
             pairs_matrix = pairs_matrix[1:]
 
-            if i in dominate[j] or j in dominate[i]:
+            if i in dominated[j] or j in dominate[i]:
                 continue
 
             if len(dominated[j]) == 0:
                 seen += 1
 
-            if seen == m - 1:
-                cont = False
+            if j in dominated[i] or i in dominate[j]:
+                continue
+
             dominate[i].append(j)
             dominated[j].append(i)
 
@@ -233,9 +264,22 @@ class rankedPairs(votingRule):
                 if i not in dominated[k]:
                     dominated[k].append(i)
 
+        ranking = []
+        dominated_count = []
         for i in range(m):
-            if len(dominated[i]) == 0:
-                return i
+            dominated_count.append(len(dominated[i]))
+
+        for _ in range(m):
+            selected = -1
+            for i in range(m):
+                if (dominated_count[i] == 0) and (i not in ranking):
+                    selected = i
+            ranking.append(selected)
+            for i in range(m):
+                if selected in dominated[i]:
+                    dominated_count[i] -= 1
+
+        return ranking
 
 
 class pluralityWithRunoff(votingRule):
@@ -262,5 +306,75 @@ class pluralityWithRunoff(votingRule):
         return c2
 
 
+class bucklin(votingRule):
+
+    name = "Bucklin"
+
+    @cached_property
+    def ranking_(self):
+        n, m = self.matrix_.shape
+        ranking = []
+        for k in range(m):
+            unique, counts = np.unique(np.argsort(-self.matrix_, axis=1)[:, :k], return_counts=True)
+            val = []
+            for i in range(len(unique)):
+                if unique[i] not in ranking and counts[i] >= n/2:
+                    val.append((counts[i], unique[i]))
+
+            val = sorted(val)[::-1]
+            ranking.extend([el for _, el in val])
+        return ranking
 
 
+class maximin(votingRule):
+
+    name = "Maximin"
+
+    def majorityMatrix(self):
+        n, m = self.matrix_.shape
+        newMatrix = np.zeros((m, m))
+        for row in self.matrix_:
+            r = np.argsort(row)
+            for i in range(m):
+                for j in range(i + 1, m):
+                    newMatrix[r[j], r[i]] += 1
+                    newMatrix[r[i], r[j]] -= 1
+        return newMatrix
+
+    @cached_property
+    def ranking_(self):
+        n, m = self.matrix_.shape
+        newMatrix = self.majorityMatrix()
+        for i in range(m):
+            newMatrix[i, i] = n
+
+        return np.argsort(newMatrix.min(axis=1))[::-1]
+
+
+class copeland(votingRule):
+
+    name = "Copeland"
+
+    def majorityMatrix(self):
+        n, m = self.matrix_.shape
+        newMatrix = np.zeros((m, m))
+        for row in self.matrix_:
+            r = np.argsort(row)
+            for i in range(m):
+                for j in range(i + 1, m):
+                    newMatrix[r[j], r[i]] += 1
+                    newMatrix[r[i], r[j]] -= 1
+        return newMatrix
+
+    @cached_property
+    def ranking_(self):
+        n, m = self.matrix_.shape
+        newMatrix = self.majorityMatrix()
+        scores = [0]*m
+        for i in range(m):
+            for j in range(i+1, m):
+                if newMatrix[i, j] > 0:
+                    scores[i] += 1
+                elif newMatrix[i, j] < 0:
+                    scores[j] += 1
+        return np.argsort(scores)[::-1]
