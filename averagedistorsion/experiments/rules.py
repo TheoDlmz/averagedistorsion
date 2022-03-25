@@ -12,8 +12,30 @@ class votingRule(DeleteCacheMixin):
         self.matrix_ = matrix
         return self
 
+    def majorityMatrix(self):
+        n, m = self.matrix_.shape
+        newMatrix = np.zeros((m, m))
+        for row in self.matrix_:
+            r = np.argsort(row)
+            for i in range(m):
+                for j in range(i + 1, m):
+                    newMatrix[r[j], r[i]] += 1
+                    newMatrix[r[i], r[j]] -= 1
+        return newMatrix
+
     @cached_property
     def ranking_(self):
+        rank = []
+        initial_matrix = self.matrix_
+        while len(rank) < initial_matrix.shape[1]: #there are some candidates
+            winner = self.compute_winner()
+            assert winner not in rank
+            rank += [winner]
+            self.matrix_[:, winner] = 0
+        self.matrix_ = initial_matrix
+        return rank
+
+    def compute_winner(self):
         raise NotImplementedError
 
     @cached_property
@@ -208,18 +230,7 @@ class egalitarian(votingRule):
 
 class rankedPairs(votingRule):
 
-    name = "ranked pairs"
-
-    def majorityMatrix(self):
-        n, m = self.matrix_.shape
-        newMatrix = np.zeros((m, m))
-        for row in self.matrix_:
-            r = np.argsort(row)
-            for i in range(m):
-                for j in range(i + 1, m):
-                    newMatrix[r[j], r[i]] += 1
-                    newMatrix[r[i], r[j]] -= 1
-        return newMatrix
+    name = "Ranked Pairs"
 
     @cached_property
     def ranking_(self):
@@ -286,8 +297,7 @@ class pluralityWithRunoff(votingRule):
 
     name = "plurality w/ runoff"
 
-    @cached_property
-    def winner_(self):
+    def compute_winner(self):
         n, m = self.matrix_.shape
         score = np.zeros(m)
         for row in self.matrix_:
@@ -330,41 +340,43 @@ class maximin(votingRule):
 
     name = "Maximin"
 
-    def majorityMatrix(self):
-        n, m = self.matrix_.shape
-        newMatrix = np.zeros((m, m))
-        for row in self.matrix_:
-            r = np.argsort(row)
-            for i in range(m):
-                for j in range(i + 1, m):
-                    newMatrix[r[j], r[i]] += 1
-                    newMatrix[r[i], r[j]] -= 1
-        return newMatrix
-
-    @cached_property
-    def ranking_(self):
+    def compute_winner(self):
         n, m = self.matrix_.shape
         newMatrix = self.majorityMatrix()
         for i in range(m):
             newMatrix[i, i] = n
 
-        return np.argsort(newMatrix.min(axis=1))[::-1]
+        return np.argmax(newMatrix.min(axis=1))
 
+class schulze(votingRule):
+
+    name = "Schulze"
+
+    def compute_winner(self):
+        n, m = self.matrix_.shape
+        d = self.majorityMatrix()
+        p = np.zeros((m, m)) #paths
+        for i in range(m):
+            for j in range(m):
+                if d[i, j] > d[j, i]:
+                    p[i, j] = d[i, j]
+        for i in range(m):
+            for j in range(m):
+                for k in range(m):
+                    p[j, k] = max(p[j, k], min(p[j, i], p[i, k]))
+        for i in range(m):
+            winner = True
+            for j in range(m):
+                if p[j, i] > p[i, j]:
+                    winner = False
+                    break
+            if winner:
+                return i
+        assert False # there always exists a Schulze winner
 
 class copeland(votingRule):
 
     name = "Copeland"
-
-    def majorityMatrix(self):
-        n, m = self.matrix_.shape
-        newMatrix = np.zeros((m, m))
-        for row in self.matrix_:
-            r = np.argsort(row)
-            for i in range(m):
-                for j in range(i + 1, m):
-                    newMatrix[r[j], r[i]] += 1
-                    newMatrix[r[i], r[j]] -= 1
-        return newMatrix
 
     @cached_property
     def ranking_(self):
