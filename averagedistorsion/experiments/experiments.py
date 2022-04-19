@@ -32,3 +32,11 @@ class experimentDistortion(DeleteCacheMixin):
     @cached_property
     def averageDistortion_(self):
         return np.mean(self.results_)
+
+    @cached_property
+    def accuracy_(self):
+        acc = 0
+        for el in self.results_:
+            if el == 1:
+                acc += 1
+        return acc/len(self.results_)
