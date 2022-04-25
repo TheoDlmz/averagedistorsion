@@ -390,3 +390,20 @@ class copeland(votingRule):
                 elif newMatrix[i, j] < 0:
                     scores[j] += 1
         return np.argsort(scores)[::-1]
+
+
+class voterUtility(votingRule):
+
+    name = "Random Voter Utility"
+
+    @cached_property
+    def ranking_(self):
+        positional_rule = np.sort(self.matrix_[0])
+        n, m = self.matrix_.shape
+        score = np.zeros(m)
+        for row in self.matrix_:
+            r = np.argsort(row)
+            for i in range(m):
+                score[r[i]] += positional_rule[i]
+
+        return np.argsort(score)[::-1]
