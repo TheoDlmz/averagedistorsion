@@ -31,7 +31,7 @@ class votingRule(DeleteCacheMixin):
             winner = self.compute_winner()
             assert winner not in rank
             rank += [winner]
-            self.matrix_[:, winner] = 0
+            self.matrix_[:, winner] = - np.infty
         self.matrix_ = initial_matrix
         return rank
 
@@ -55,6 +55,14 @@ class votingRule(DeleteCacheMixin):
             return max(1, np.max(util) / util[self.winner_])
         else:
             return max(1, np.max(util[:-self.irrelevant_candidates]) / util[self.winner_])
+
+    @cached_property
+    def cost_(self):
+        util = -self.utilities_
+        if self.irrelevant_candidates == 0:
+            return max(1, util[self.winner_]/np.min(util))
+        else:
+            return max(1, util[self.winner_]/np.min(util[:-self.irrelevant_candidates]))
 
 
 class plurality(votingRule):
@@ -155,7 +163,7 @@ class stv(votingRule):
                     ranking.append(elem)
                     loser = elem
                     break
-            matrix_copy[:, loser] = 0
+            matrix_copy[:, loser] = - np.infty
         for i in range(m):
             if i not in ranking:
                 ranking.append(i)

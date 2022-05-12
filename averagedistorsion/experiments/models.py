@@ -36,8 +36,9 @@ class euclidean(model):
         for i in range(n_voters):
             for j in range(n_candidates):
                 dist = np.sqrt(sum((p_voters[i][k] - p_candidates[j][k])**2 for k in range(self.dim)))
-                round_dist = np.ceil(dist*100)/100 # To avoid infinite utilities
-                result[i, j] = 1 / round_dist
+                # round_dist = np.ceil(dist*100)/100 # To avoid infinite utilities
+                # result[i, j] = 1 / round_dist
+                result[i, j] = -dist
         if self.norm:
             result = (result.T / result.sum(axis=1)).T
         return result

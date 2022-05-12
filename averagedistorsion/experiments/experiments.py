@@ -6,10 +6,11 @@ from averagedistorsion.experiments.models import uniformNormalized
 
 class experimentDistortion(DeleteCacheMixin):
 
-    def __init__(self, rule=None, model=None):
+    def __init__(self, rule=None, model=None, cost=False):
         if model is None:
             model = uniformNormalized()
         self.model = model
+        self.cost = cost
 
         if rule is None:
             rule = borda()
@@ -17,7 +18,10 @@ class experimentDistortion(DeleteCacheMixin):
 
     def election(self, n_voters, n_candidates):
         matrix = self.model(n_voters, n_candidates)
-        return self.rule(matrix).distortion_
+        if self.cost:
+            return self.rule(matrix).cost_
+        else:
+            return self.rule(matrix).distortion_
 
     def __call__(self, n_voters, n_candidates, n_tries=10000, irrelevant_candidates=0):
         self.delete_cache()
