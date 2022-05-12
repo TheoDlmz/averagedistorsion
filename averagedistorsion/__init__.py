@@ -6,3 +6,5 @@ __version__ = '0.1.0'
 
 
 from averagedistorsion.experiments import *
+from averagedistorsion.rules import *
+from averagedistorsion.models import *
