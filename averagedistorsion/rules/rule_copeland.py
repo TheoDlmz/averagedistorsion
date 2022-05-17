@@ -4,6 +4,9 @@ from averagedistorsion.utils.cached import DeleteCacheMixin,cached_property
 
 
 class RuleCopeland(RuleRanking):
+    """
+    The Copeland rule, in which the winning candidate is the one that win the most duels against other candidates
+    """
 
     name = "Copeland"
 

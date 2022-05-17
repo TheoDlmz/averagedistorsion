@@ -4,6 +4,9 @@ from averagedistorsion.utils.cached import DeleteCacheMixin,cached_property
 
 
 class RuleBucklin(RuleRanking):
+    """
+    The Bucklin rule
+    """
 
     name = "Bucklin"
 

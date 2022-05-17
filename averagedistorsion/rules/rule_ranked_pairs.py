@@ -4,6 +4,9 @@ from averagedistorsion.utils.cached import DeleteCacheMixin, cached_property
 
 
 class RuleRankedPairs(RuleRanking):
+    """
+    The ranked pairs rule
+    """
 
     name = "Ranked Pairs"
 

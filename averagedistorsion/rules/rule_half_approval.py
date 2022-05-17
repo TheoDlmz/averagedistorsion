@@ -4,8 +4,11 @@ from averagedistorsion.utils.cached import DeleteCacheMixin,cached_property
 
 
 class RuleHalfApproval(RuleRanking):
+    """
+    The approval rule in which half of the candidates are approved
+    """
 
-    name = "half approval"
+    name = "Half approval"
 
     @cached_property
     def ranking_(self):

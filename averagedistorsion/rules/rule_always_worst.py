@@ -4,8 +4,11 @@ from averagedistorsion.utils.cached import DeleteCacheMixin,cached_property
 
 
 class RuleAlwaysWorst(RuleRanking):
+    """
+    A rule that always select the worst possible candidate
+    """
 
-    name = "Always worst"
+    name = "Always Worst"
 
     @cached_property
     def ranking_(self):

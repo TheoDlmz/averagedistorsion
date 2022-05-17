@@ -4,6 +4,9 @@ from averagedistorsion.utils.cached import DeleteCacheMixin,cached_property
 
 
 class RuleSTV(RuleRanking):
+    """
+    The STV rule
+    """
 
     name = "STV"
 

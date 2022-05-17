@@ -3,7 +3,16 @@ from averagedistorsion.models.model import Model
 
 
 class ModelGaussianMultimodal(Model):
+    """
+    Model in which utilities are drawn from a Multimodal Gaussian (with several peaks)
 
+    Parameters
+    ----------
+    phi: float
+        The std of the Gaussian
+    n_peaks: int
+        The number of peaks
+    """
     def __init__(self, phi=0.2, n_peaks=2):
         self.phi = phi
         self.n_peaks = n_peaks

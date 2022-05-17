@@ -4,8 +4,11 @@ from averagedistorsion.utils.cached import DeleteCacheMixin,cached_property
 
 
 class RuleMedian(RuleRanking):
+    """
+    The median rule, i.e. the rule that select the candidate with the best median utility
+    """
 
-    name = "median"
+    name = "Median"
 
     @cached_property
     def ranking_(self):

@@ -4,6 +4,10 @@ from averagedistorsion.utils.cached import DeleteCacheMixin,cached_property
 
 
 class RuleMaximin(Rule):
+    """
+    The Maximin rule, in which the winner is the candidate that maximizes its score in its worst duel against another
+    candidate
+    """
 
     name = "Maximin"
 

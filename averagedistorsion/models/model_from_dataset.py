@@ -3,6 +3,16 @@ from averagedistorsion.models.model import Model
 
 
 class ModelFromDataset(Model):
+    """
+    A model in which utilities are drawn from a utility matrix
+
+    Parameters
+    ----------
+    dataset: np.array
+        The matrix of utilities for every voters
+    noise: float
+        The std of the noise that we want to add to the data
+    """
 
     def __init__(self, dataset, noise=0):
         dataset = np.array(dataset)

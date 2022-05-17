@@ -17,3 +17,4 @@ from averagedistorsion.rules.rule_random_voter_utility import RuleRandomVoterUti
 from averagedistorsion.rules.rule_ranked_pairs import RuleRankedPairs
 from averagedistorsion.rules.rule_schulze import RuleSchulze
 from averagedistorsion.rules.rule_stv import RuleSTV
+from averagedistorsion.rules.rule_veto import RuleVeto

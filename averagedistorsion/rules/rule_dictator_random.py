@@ -4,8 +4,11 @@ from averagedistorsion.utils.cached import DeleteCacheMixin,cached_property
 
 
 class RuleDictatorRandom(RuleRanking):
+    """
+    The dictatorship of a random voter
+    """
 
-    name = "random dictator"
+    name = "Random Dictatorship"
 
     @cached_property
     def ranking_(self):

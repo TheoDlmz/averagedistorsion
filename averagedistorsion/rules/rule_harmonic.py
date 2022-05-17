@@ -4,8 +4,11 @@ from averagedistorsion.utils.cached import DeleteCacheMixin,cached_property
 
 
 class RuleHarmonic(RuleRanking):
+    """
+    A positional scoring rule with the harmonic vector (1,1/2,1/3,1/4,...)
+    """
 
-    name = "harmonic"
+    name = "Harmonic"
 
     @cached_property
     def ranking_(self):

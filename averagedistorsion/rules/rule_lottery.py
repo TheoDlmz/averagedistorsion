@@ -4,8 +4,11 @@ from averagedistorsion.utils.cached import DeleteCacheMixin,cached_property
 
 
 class RuleLottery(RuleRanking):
+    """
+    A rule that select a random candidate
+    """
 
-    name = "lottery"
+    name = "Lottery"
 
     @cached_property
     def ranking_(self):

@@ -3,12 +3,39 @@ from averagedistorsion.models.model import Model
 
 
 class ModelEuclidean(Model):
+    """
+    Euclidean models are models in which utilities are represented by the opposite of the distance between a voter
+    and a candidate. The goal is then to minimize the sum of distance to the winning candidate.
+
+     Parameters
+    ----------
+    dim: Int
+        The number of dimensions of the Euclidean space. Default is 2
+    norm: Bool
+        If true, utilities are normalized
+
+    """
+
+    positive = False
 
     def __init__(self, dim=2, norm=False):
         self.dim = dim
         self.norm = norm
 
     def generate_points(self, n_points):
+        """
+
+        Parameters
+        ----------
+        n_points: Int
+            The number of points to generate on the Euclidean space
+
+        Returns
+        -------
+        np.array
+            The positions of the points on the plane
+
+        """
         raise NotImplementedError
 
     def __call__(self, n_voters, n_candidates):

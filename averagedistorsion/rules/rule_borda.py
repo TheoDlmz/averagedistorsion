@@ -4,8 +4,11 @@ from averagedistorsion.utils.cached import DeleteCacheMixin,cached_property
 
 
 class RuleBorda(RuleRanking):
+    """
+    The borda rule, that gives m-1 points to the first candidate, m-2 to the second, etc. and 0 to the last one
+    """
 
-    name = "borda"
+    name = "Borda"
 
     @cached_property
     def ranking_(self):

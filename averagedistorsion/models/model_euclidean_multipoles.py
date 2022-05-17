@@ -3,6 +3,22 @@ from averagedistorsion.models.model_euclidean import ModelEuclidean
 
 
 class ModelEuclideanMultiPoles(ModelEuclidean):
+    """
+    An Euclidean model in which position are drawn from several gaussian. Their position are
+    drawn randomly on the plane.
+
+    Parameters
+    ----------
+    poles_num: int
+        The number of gaussian to use
+    phi: float
+        The std of the gaussian
+    dim: int
+        The number of dimensions of the Euclidean space
+    norm: bool
+        If True, the utilities are normalized
+
+    """
 
     def __init__(self, poles_num=3, phi=0.2, dim=2, norm=False):
         super().__init__(dim=dim, norm=norm)

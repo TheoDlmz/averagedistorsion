@@ -4,6 +4,9 @@ from averagedistorsion.utils.cached import DeleteCacheMixin,cached_property
 
 
 class RuleRandomVoterUtility(RuleRanking):
+    """
+    The rule that use the utility vector of the first voter as a positional scoring rule
+    """
 
     name = "Random Voter Utility"
 

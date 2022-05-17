@@ -3,6 +3,14 @@ from averagedistorsion.models.model import Model
 
 
 class ModelGaussian(Model):
+    """
+    Model in which utilities are drawn from a Gaussian
+
+    Parameters
+    ----------
+    phi: float
+        The std of the Gaussian
+    """
 
     def __init__(self, phi=0):
         self.phi = phi

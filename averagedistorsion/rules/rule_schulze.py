@@ -4,6 +4,9 @@ from averagedistorsion.utils.cached import DeleteCacheMixin,cached_property
 
 
 class RuleSchulze(Rule):
+    """
+    The Schulze rule
+    """
 
     name = "Schulze"
 

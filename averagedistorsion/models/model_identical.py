@@ -3,7 +3,14 @@ from averagedistorsion.models.model import Model
 
 
 class ModelIdentical(Model):
+    """
+    Model in which candidates have a true utility and voter have a noisy approximation of it
 
+    Parameters
+    ----------
+    phi: float
+        The % of noise is phi
+    """
     def __init__(self, phi=0):
         self.phi = phi
 

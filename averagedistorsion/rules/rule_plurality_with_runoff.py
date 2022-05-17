@@ -4,8 +4,12 @@ from averagedistorsion.utils.cached import DeleteCacheMixin,cached_property
 
 
 class RulePluralityWithRunoff(Rule):
+    """
+    The plurality with runoff rule, in which every voter gives one point to one candidate, and the two
+    candidates with the highest score runs for a second round. The one with the majority wins.
+    """
 
-    name = "plurality w/ runoff"
+    name = "Plurality w/ runoff"
 
     @cached_property
     def winner_(self):
