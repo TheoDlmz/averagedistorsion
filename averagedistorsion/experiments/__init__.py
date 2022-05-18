@@ -1,3 +1,4 @@
 from averagedistorsion.experiments.two_candidates_experiments import *
 from averagedistorsion.experiments.experiment_irrelevant_candidates import ExperimentIrrelevantCandidates
 from averagedistorsion.experiments.experiment_relevant_candidates import ExperimentRelevantCandidates
+from averagedistorsion.experiments.experiment_voters import ExperimentVoters

@@ -67,5 +67,17 @@ class ExperimentIrrelevantCandidates(DeleteCacheMixin):
         if show:
             plt.show()
 
+    def save_results(self, filename):
+        columns = ["rule", "n_voters", "n_relevant_candidates", "n_irrelevant_candidates",
+                   "n_tries", "distortion", "accuracy"]
+        out = []
+        for j in range(len(self.list_rules)):
+            for i in range(self.n_irrelevant_candidates+1):
+                out.append([self.list_rules[j].name, self.n_voters, self.n_candidates, i,
+                            self.n_tries, self.res[j][i], self.accuracy[j][i]])
+
+        np.savetxt(filename, np.array(out), fmt="%s", delimiter=",", header=",".join(columns))
+
+
 
 # Save & Load results
