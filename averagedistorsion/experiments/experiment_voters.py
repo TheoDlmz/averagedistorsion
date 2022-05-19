@@ -45,7 +45,7 @@ class ExperimentVoters(DeleteCacheMixin):
             plt.plot(self.n_voters, self.res[j], style, label=self.list_rules[j].name, linewidth=2)
         plt.legend()
         plt.title("%s, m=%i, m'=%i"%(titre, self.n_relevant_candidates, self.n_irrelevant_candidates))
-        plt.xlabel("Candidates")
+        plt.xlabel("Voters")
         plt.ylabel("Average distortion")
         plt.ylim(1)
         plt.xlim(self.n_voters[0], self.n_voters[-1])
@@ -63,7 +63,7 @@ class ExperimentVoters(DeleteCacheMixin):
         plt.xlim(self.n_voters[0], self.n_voters[-1])
         plt.ylim(0, 1)
         plt.title("%s, m=%i, m'=%i"%(titre, self.n_relevant_candidates, self.n_irrelevant_candidates))
-        plt.xlabel("Candidates")
+        plt.xlabel("Voters")
         plt.ylabel("Accuracy")
         if show:
             plt.show()
