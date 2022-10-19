@@ -1,0 +1,154 @@
+% This file was created by tikzplotlib v0.9.8.
+\begin{tikzpicture}
+
+\definecolor{color0}{rgb}{0.12156862745098,0.466666666666667,0.705882352941177}
+\definecolor{color1}{rgb}{1,0.498039215686275,0.0549019607843137}
+\definecolor{color2}{rgb}{0.172549019607843,0.627450980392157,0.172549019607843}
+\definecolor{color3}{rgb}{0.83921568627451,0.152941176470588,0.156862745098039}
+\definecolor{color4}{rgb}{0.580392156862745,0.403921568627451,0.741176470588235}
+\definecolor{color5}{rgb}{0.549019607843137,0.337254901960784,0.294117647058824}
+\definecolor{color6}{rgb}{0.890196078431372,0.466666666666667,0.76078431372549}
+\definecolor{color7}{rgb}{0.737254901960784,0.741176470588235,0.133333333333333}
+
+\begin{axis}[
+legend cell align={left},
+legend style={
+  fill opacity=0.8,
+  draw opacity=1,
+  text opacity=1,
+  at={(0.03,0.97)},
+  anchor=north west,
+  draw=white!80!black
+},
+tick align=outside,
+tick pos=left,
+title={Only relevant alternatives : euclidean\_uniform\_2d},
+x grid style={white!69.0196078431373!black},
+xlabel={Number of relevant alternatives},
+xmin=2, xmax=10,
+xtick style={color=black},
+y grid style={white!69.0196078431373!black},
+ylabel={Distortion},
+ymin=1, ymax=1.14611059318098,
+ytick style={color=black}
+]
+\addplot [line width=2pt, color0, mark=*, mark size=5, mark options={solid}]
+table {%
+2 1.00563912654324
+3 1.02491228606673
+4 1.04425603228451
+5 1.06654504689817
+6 1.08210532718222
+7 1.10011175963405
+8 1.11435980413439
+9 1.12812846996019
+10 1.13940163702249
+};
+\addlegendentry{Plurality}
+\addplot [line width=2pt, color1, mark=*, mark size=5, mark options={solid}]
+table {%
+2 1.0054950668615
+3 1.0072005046584
+4 1.00973017077997
+5 1.01285803696782
+6 1.01547355798903
+7 1.01794935990414
+8 1.02182977869336
+9 1.02310622568785
+10 1.02491923045522
+};
+\addlegendentry{PluralityVeto}
+\addplot [line width=2pt, color2, mark=*, mark size=5, mark options={solid}]
+table {%
+2 1.00550396758741
+3 1.01213844119169
+4 1.02014743257808
+5 1.02716958406411
+6 1.03434816651844
+7 1.04094903268951
+8 1.04739646828356
+9 1.05415896087308
+10 1.0598917852606
+};
+\addlegendentry{STV}
+\addplot [line width=2pt, color3, mark=*, mark size=5, mark options={solid}]
+table {%
+2 1.0052225138528
+3 1.0110368834874
+4 1.01566184707708
+5 1.02353613657843
+6 1.0306595980842
+7 1.0373052659771
+8 1.04632431937848
+9 1.05420220926256
+10 1.06069872586962
+};
+\addlegendentry{Harmonic}
+\addplot [line width=2pt, color4, mark=*, mark size=5, mark options={solid}]
+table {%
+2 1.00562727511894
+3 1.02413501738976
+4 1.02450232779622
+5 1.02452629705847
+6 1.0322647819827
+7 1.02705379301584
+8 1.03573989825095
+9 1.02866661395113
+10 1.03687336778426
+};
+\addlegendentry{Half approval}
+\addplot [line width=2pt, color5, mark=*, mark size=5, mark options={solid}]
+table {%
+2 1.00547597143405
+3 1.00722686458991
+4 1.00791496560113
+5 1.00822680121766
+6 1.00784332879451
+7 1.00847972698266
+8 1.00851231910864
+9 1.00850389841415
+10 1.00865566837119
+};
+\addlegendentry{Ranked Pairs}
+\addplot [line width=2pt, color6, mark=*, mark size=5, mark options={solid}]
+table {%
+2 1.00535455431453
+3 1.00663886878169
+4 1.00778318815198
+5 1.00813916160524
+6 1.00828607618482
+7 1.00805763107614
+8 1.00771414646193
+9 1.00751471989059
+10 1.00781913749238
+};
+\addlegendentry{Copeland}
+\addplot [line width=2pt, white!49.8039215686275!black, mark=*, mark size=5, mark options={solid}]
+table {%
+2 1.00593589202163
+3 1.00861878883946
+4 1.00973176300519
+5 1.00993445701276
+6 1.01024954864438
+7 1.01017067600945
+8 1.00976056888699
+9 1.00948412913895
+10 1.00967083036737
+};
+\addlegendentry{Borda}
+\addplot [line width=2pt, color7, mark=*, mark size=5, mark options={solid}]
+table {%
+2 1.00576570353351
+3 1.00768227176292
+4 1.00782945957679
+5 1.00837678161724
+6 1.00947355801178
+7 1.00916039605089
+8 1.00944490402771
+9 1.00963132744765
+10 1.00983207118999
+};
+\addlegendentry{OddBorda}
+\end{axis}
+
+\end{tikzpicture}

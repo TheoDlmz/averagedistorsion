@@ -1,0 +1,105 @@
+% This file was created by tikzplotlib v0.9.8.
+\begin{tikzpicture}
+
+\definecolor{color0}{rgb}{0.12156862745098,0.466666666666667,0.705882352941177}
+\definecolor{color1}{rgb}{1,0.498039215686275,0.0549019607843137}
+\definecolor{color2}{rgb}{0.172549019607843,0.627450980392157,0.172549019607843}
+\definecolor{color3}{rgb}{0.83921568627451,0.152941176470588,0.156862745098039}
+
+\begin{axis}[
+legend cell align={left},
+legend style={
+  fill opacity=0.8,
+  draw opacity=1,
+  text opacity=1,
+  at={(0.03,0.97)},
+  anchor=north west,
+  draw=white!80!black
+},
+tick align=outside,
+tick pos=left,
+title={NA game : uniform},
+x grid style={white!69.0196078431373!black},
+xlabel={Number of irrelevant candidates},
+xmin=0, xmax=13,
+xtick style={color=black},
+y grid style={white!69.0196078431373!black},
+ylabel={Distortion},
+ymin=1, ymax=4.29217603919358,
+ytick style={color=black}
+]
+\addplot [line width=2pt, color0, mark=*, mark size=5, mark options={solid}]
+table {%
+0 3
+1 2.73458934116081
+2 2.95461982972936
+3 3.11403449063044
+4 3.24159087420767
+5 3.35922935790678
+6 3.46968653725771
+7 3.58728768677935
+8 3.687960092736
+9 3.78468951830099
+10 3.87361482788166
+11 3.9821259828625
+12 4.05781395848017
+13 4.15661523162397
+};
+\addlegendentry{harmonic}
+\addplot [line width=2pt, color1, mark=*, mark size=5, mark options={solid}]
+table {%
+0 3
+1 2.29978497846545
+2 2.02697096354188
+3 1.89402662867664
+4 1.79464037684786
+5 1.71611892645129
+6 1.65967983709791
+7 1.60935139339615
+8 1.57183043362085
+9 1.54378497277298
+10 1.512865322091
+11 1.48866252003557
+12 1.46716107928353
+13 1.44539908023173
+};
+\addlegendentry{borda}
+\addplot [line width=2pt, color2, mark=*, mark size=5, mark options={solid}]
+table {%
+0 3
+1 2.24304256933786
+2 2.22225471148654
+3 2.02325573031007
+4 1.88742188315176
+5 1.78762741807333
+6 1.7164702614366
+7 1.65943301021851
+8 1.61406664752141
+9 1.56922302697355
+10 1.53963082500063
+11 1.51205218429524
+12 1.48816054048425
+13 1.46712169827424
+};
+\addlegendentry{oddBorda}
+\addplot [line width=2pt, color3, mark=*, mark size=5, mark options={solid}]
+table {%
+0 3
+1 3
+2 3
+3 3
+4 3
+5 3
+6 3
+7 3
+8 3
+9 3
+10 3
+11 3
+12 3
+13 3
+};
+\addlegendentry{veto}
+\end{axis}
+
+\end{tikzpicture}

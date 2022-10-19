@@ -34,6 +34,8 @@ class ModelFromDataset(Model):
         np.random.shuffle(list_candidates)
         candidates = list_candidates[:n_candidates]
 
-        return self.dataset[voters][:, candidates] \
+        output = self.dataset[voters][:, candidates] \
                + self.noise*np.random.normal(size=(n_voters, n_candidates))
+
+        return np.maximum(0, output)
 

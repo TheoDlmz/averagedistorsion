@@ -35,13 +35,13 @@ class ExperimentRelevantCandidates(DeleteCacheMixin):
 
     def show_distortion(self, titre, show=True):
         plt.figure(figsize=(20, 10))
-        style = '-'
+        style = 'o-'
         for j in range(len(self.list_rules)):
             if j >= 10:
-                style = '--'
+                style = 'o--'
             plt.plot(range(2, self.n_candidates+1), self.res[j], style, label=self.list_rules[j].name, linewidth=2)
         plt.legend()
-        plt.title("%s, n=%i"%(titre, self.n_voters))
+        plt.title("%s, n=%i" % (titre, self.n_voters))
         plt.xlabel("Candidates")
         plt.ylabel("Average distortion")
         plt.ylim(1)
@@ -51,15 +51,15 @@ class ExperimentRelevantCandidates(DeleteCacheMixin):
 
     def show_accuracy(self, titre, show=True):
         plt.figure(figsize=(20, 10))
-        style = '-'
+        style = 'o-'
         for j in range(len(self.list_rules)):
             if j >= 10:
-                style = '--'
+                style = 'o--'
             plt.plot(range(2, self.n_candidates+1), self.accuracy[j], style, label=self.list_rules[j].name, linewidth=2)
         plt.legend()
         plt.xlim(2, self.n_candidates)
         plt.ylim(0, 1)
-        plt.title("%s, n=%i"%(titre, self.n_voters))
+        plt.title("%s, n=%i" % (titre, self.n_voters))
         plt.xlabel("Candidates")
         plt.ylabel("Accuracy")
         if show:

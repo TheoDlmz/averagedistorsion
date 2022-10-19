@@ -1,0 +1,154 @@
+% This file was created by tikzplotlib v0.9.8.
+\begin{tikzpicture}
+
+\definecolor{color0}{rgb}{0.12156862745098,0.466666666666667,0.705882352941177}
+\definecolor{color1}{rgb}{1,0.498039215686275,0.0549019607843137}
+\definecolor{color2}{rgb}{0.172549019607843,0.627450980392157,0.172549019607843}
+\definecolor{color3}{rgb}{0.83921568627451,0.152941176470588,0.156862745098039}
+\definecolor{color4}{rgb}{0.580392156862745,0.403921568627451,0.741176470588235}
+\definecolor{color5}{rgb}{0.549019607843137,0.337254901960784,0.294117647058824}
+\definecolor{color6}{rgb}{0.890196078431372,0.466666666666667,0.76078431372549}
+\definecolor{color7}{rgb}{0.737254901960784,0.741176470588235,0.133333333333333}
+
+\begin{axis}[
+legend cell align={left},
+legend style={
+  fill opacity=0.8,
+  draw opacity=1,
+  text opacity=1,
+  at={(0.03,0.97)},
+  anchor=north west,
+  draw=white!80!black
+},
+tick align=outside,
+tick pos=left,
+title={Utilities : restaurants},
+x grid style={white!69.0196078431373!black},
+xlabel={Number of irrelevant alternatives},
+xmin=0, xmax=8,
+xtick style={color=black},
+y grid style={white!69.0196078431373!black},
+ylabel={Distortion},
+ymin=1, ymax=1.03686830401504,
+ytick style={color=black}
+]
+\addplot [line width=2pt, color0, mark=*, mark size=5, mark options={solid}]
+table {%
+0 1.00632199666938
+1 1.00937293525869
+2 1.01284548388864
+3 1.01607009170297
+4 1.02073127858725
+5 1.02344888812216
+6 1.02770383935444
+7 1.03051334802737
+8 1.0352103939518
+};
+\addlegendentry{Plurality}
+\addplot [line width=2pt, color1, mark=*, mark size=5, mark options={solid}]
+table {%
+0 1.00592638427792
+1 1.00731503632412
+2 1.0090586527659
+3 1.01291204452989
+4 1.015738882009
+5 1.0172285573268
+6 1.02045113462788
+7 1.02293325232576
+8 1.02723603575996
+};
+\addlegendentry{PluralityVeto}
+\addplot [line width=2pt, color2, mark=*, mark size=5, mark options={solid}]
+table {%
+0 1.00625836704565
+1 1.00876655425928
+2 1.0130677904584
+3 1.01672817871263
+4 1.02117930757975
+5 1.02416388335217
+6 1.02722980117529
+7 1.03110261456155
+8 1.03344169301858
+};
+\addlegendentry{STV}
+\addplot [line width=2pt, color3, mark=*, mark size=5, mark options={solid}]
+table {%
+0 1.00598543706257
+1 1.00515327816707
+2 1.00499275689325
+3 1.00508323293601
+4 1.00511750161117
+5 1.00567075097907
+6 1.00573261399566
+7 1.00593169054407
+8 1.0067195136565
+};
+\addlegendentry{Harmonic}
+\addplot [line width=2pt, color4, mark=*, mark size=5, mark options={solid}]
+table {%
+0 1.00560836289288
+1 1.0092634084946
+2 1.00716842478832
+3 1.00727885384772
+4 1.00704507348247
+5 1.00653970139095
+6 1.00625607737867
+7 1.00630062686145
+8 1.00587580966587
+};
+\addlegendentry{Half approval}
+\addplot [line width=2pt, color5, mark=*, mark size=5, mark options={solid}]
+table {%
+0 1.00579301905381
+1 1.0060112763686
+2 1.0053140005672
+3 1.00549405503761
+4 1.00558073053168
+5 1.00534158520949
+6 1.00510121492421
+7 1.0055548519135
+8 1.0053160979455
+};
+\addlegendentry{Ranked Pairs}
+\addplot [line width=2pt, color6, mark=*, mark size=5, mark options={solid}]
+table {%
+0 1.00592824862689
+1 1.00598908853816
+2 1.0055986202538
+3 1.0053375098512
+4 1.00578890393228
+5 1.00467531581317
+6 1.00491485102465
+7 1.00448982968476
+8 1.00432111344327
+};
+\addlegendentry{Copeland}
+\addplot [line width=2pt, white!49.8039215686275!black, mark=*, mark size=5, mark options={solid}]
+table {%
+0 1.00583258911748
+1 1.00429013925201
+2 1.00363632789528
+3 1.00344915962137
+4 1.00277634282226
+5 1.00243369516568
+6 1.0023643450556
+7 1.00217751571064
+8 1.00205219268693
+};
+\addlegendentry{Borda}
+\addplot [line width=2pt, color7, mark=*, mark size=5, mark options={solid}]
+table {%
+0 1.00563276886318
+1 1.00627394975722
+2 1.00541950926522
+3 1.00500174723812
+4 1.00468400154711
+5 1.00421246123724
+6 1.00420281337123
+7 1.00349709195122
+8 1.00381275174968
+};
+\addlegendentry{Random Voter Utility}
+\end{axis}
+
+\end{tikzpicture}

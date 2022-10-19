@@ -14,7 +14,7 @@ class ExperimentIrrelevantCandidates(DeleteCacheMixin):
         self.list_rules = list_rules
         self.n_candidates = n_candidates
         self.n_irrelevant_candidates = n_irrelevant_candidates
-        self.n_voters= n_voters
+        self.n_voters = n_voters
         self.n_tries = n_tries
         self.res = []
         self.accuracy = []
@@ -37,10 +37,10 @@ class ExperimentIrrelevantCandidates(DeleteCacheMixin):
 
     def show_distortion(self, titre, show=True):
         plt.figure(figsize=(20, 10))
-        style = '-'
+        style = 'o-'
         for j in range(len(self.list_rules)):
             if j >= 10:
-                style = '--'
+                style = 'o--'
             plt.plot(range(self.n_irrelevant_candidates+1), self.res[j], style, label=self.list_rules[j].name, linewidth=2)
         plt.legend()
         plt.title("%s, m=%i, n=%i"%(titre, self.n_candidates, self.n_voters))
@@ -53,10 +53,10 @@ class ExperimentIrrelevantCandidates(DeleteCacheMixin):
 
     def show_accuracy(self, titre, show=True):
         plt.figure(figsize=(20, 10))
-        style = '-'
+        style = 'o-'
         for j in range(len(self.list_rules)):
             if j >= 10:
-                style = '--'
+                style = 'o--'
             plt.plot(range(self.n_irrelevant_candidates+1), self.accuracy[j], style, label=self.list_rules[j].name, linewidth=2)
         plt.legend()
         plt.xlim(0, self.n_irrelevant_candidates)

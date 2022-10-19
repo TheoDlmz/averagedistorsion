@@ -1,0 +1,168 @@
+% This file was created by tikzplotlib v0.9.8.
+\begin{tikzpicture}
+
+\definecolor{color0}{rgb}{0.12156862745098,0.466666666666667,0.705882352941177}
+\definecolor{color1}{rgb}{1,0.498039215686275,0.0549019607843137}
+\definecolor{color2}{rgb}{0.172549019607843,0.627450980392157,0.172549019607843}
+\definecolor{color3}{rgb}{0.83921568627451,0.152941176470588,0.156862745098039}
+\definecolor{color4}{rgb}{0.580392156862745,0.403921568627451,0.741176470588235}
+\definecolor{color5}{rgb}{0.549019607843137,0.337254901960784,0.294117647058824}
+\definecolor{color6}{rgb}{0.890196078431372,0.466666666666667,0.76078431372549}
+\definecolor{color7}{rgb}{0.737254901960784,0.741176470588235,0.133333333333333}
+\definecolor{color8}{rgb}{0.0901960784313725,0.745098039215686,0.811764705882353}
+
+\begin{axis}[
+legend cell align={left},
+legend style={
+  fill opacity=0.8,
+  draw opacity=1,
+  text opacity=1,
+  at={(0.03,0.03)},
+  anchor=south west,
+  draw=white!80!black
+},
+tick align=outside,
+tick pos=left,
+title={restaurants\_10},
+x grid style={white!69.0196078431373!black},
+xlabel={Number of irrelevant candidates},
+xmin=2, xmax=10,
+xtick style={color=black},
+y grid style={white!69.0196078431373!black},
+ylabel={Accuracy},
+ymin=0, ymax=1,
+ytick style={color=black}
+]
+\addplot [thick, color0]
+table {%
+2 0.9203
+3 0.8838
+4 0.8696
+5 0.8501
+6 0.8274
+7 0.8255
+8 0.7963
+9 0.7918
+10 0.7802
+};
+\addlegendentry{Veto}
+\addplot [thick, color1]
+table {%
+2 0.92
+3 0.8969
+4 0.8882
+5 0.8698
+6 0.8535
+7 0.8391
+8 0.8317
+9 0.8228
+10 0.8042
+};
+\addlegendentry{Plurality}
+\addplot [thick, color2]
+table {%
+2 0.9154
+3 0.911
+4 0.9001
+5 0.8914
+6 0.8813
+7 0.8623
+8 0.8553
+9 0.8552
+10 0.84
+};
+\addlegendentry{PluralityVeto}
+\addplot [thick, color3]
+table {%
+2 0.9151
+3 0.9053
+4 0.8855
+5 0.8724
+6 0.8629
+7 0.8463
+8 0.8399
+9 0.8228
+10 0.8189
+};
+\addlegendentry{STV}
+\addplot [thick, color4]
+table {%
+2 0.9158
+3 0.9292
+4 0.9289
+5 0.9219
+6 0.9248
+7 0.924
+8 0.92
+9 0.9171
+10 0.9179
+};
+\addlegendentry{Harmonic}
+\addplot [thick, color5]
+table {%
+2 0.9186
+3 0.9013
+4 0.9086
+5 0.9088
+6 0.911
+7 0.9133
+8 0.911
+9 0.9165
+10 0.9138
+};
+\addlegendentry{Half approval}
+\addplot [thick, color6]
+table {%
+2 0.9184
+3 0.9173
+4 0.9177
+5 0.921
+6 0.9211
+7 0.9232
+8 0.9256
+9 0.9216
+10 0.9256
+};
+\addlegendentry{Ranked Pairs}
+\addplot [thick, white!49.8039215686275!black]
+table {%
+2 0.9208
+3 0.9221
+4 0.9235
+5 0.9255
+6 0.9243
+7 0.9262
+8 0.9242
+9 0.9254
+10 0.9237
+};
+\addlegendentry{Copeland}
+\addplot [thick, color7]
+table {%
+2 0.9185
+3 0.9283
+4 0.9365
+5 0.9406
+6 0.9434
+7 0.946
+8 0.9539
+9 0.9488
+10 0.9555
+};
+\addlegendentry{Borda}
+\addplot [thick, color8]
+table {%
+2 0.9177
+3 0.918
+4 0.9229
+5 0.9261
+6 0.9288
+7 0.935
+8 0.9401
+9 0.9374
+10 0.9352
+};
+\addlegendentry{Random Voter Utility}
+\end{axis}
+
+\end{tikzpicture}
